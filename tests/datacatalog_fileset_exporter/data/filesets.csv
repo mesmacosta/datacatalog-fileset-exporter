@@ -1,0 +1,7 @@
+entry_group_name,entry_group_display_name,entry_group_description,entry_id,entry_display_name,entry_description,entry_file_patterns,schema_column_name,schema_column_type,schema_column_description,schema_column_mode
+my-entry-group,My Fileset Entry Group,This Entry Group consists of ....,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,first_name,STRING,First name,REQUIRED
+,,,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,first_NAME,STRING,First name,REQUIRED
+,,,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,last_name,STRING,Last name,REQUIRED
+my-entry-group-2,My Fileset Entry Group,This Entry Group consists of ....,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,first_name,STRING,First name,REQUIRED
+,,,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,first_NAME,STRING,First name,REQUIRED
+,,,my-entry,My filset,This fileset consists of all files for the bucket,gs://bucket_13c4/*,last_name,STRING,Last name,REQUIRED
