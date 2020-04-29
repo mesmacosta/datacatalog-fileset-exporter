@@ -8,8 +8,7 @@ from datacatalog_fileset_exporter import datacatalog_facade
 
 class DataCatalogFacadeTest(unittest.TestCase):
 
-    @mock.patch('datacatalog_fileset_exporter.datacatalog_facade.'
-                'datacatalog.DataCatalogClient')
+    @mock.patch('datacatalog_fileset_exporter.datacatalog_facade.' 'datacatalog.DataCatalogClient')
     def setUp(self, mock_datacatalog_client):
         self.__datacatalog_facade = datacatalog_facade.DataCatalogFacade()
         # Shortcut for the object assigned to self.__datacatalog_facade.__datacatalog
@@ -66,8 +65,7 @@ class DataCatalogFacadeTest(unittest.TestCase):
         datacatalog = self.__datacatalog_client
         datacatalog.get_tag_template.return_value = {}
 
-        self.__datacatalog_facade.get_entries_from_search_results(
-            search_results)
+        self.__datacatalog_facade.get_entries_from_search_results(search_results)
 
         self.assertEqual(2, datacatalog.get_entry.call_count)
 
@@ -83,12 +81,10 @@ class DataCatalogFacadeTest(unittest.TestCase):
         search_results = [entry, entry_2]
 
         datacatalog = self.__datacatalog_client
-        datacatalog.get_entry.side_effect = [
-            {}, exceptions.GoogleAPICallError('Permission denied')
-        ]
+        datacatalog.get_entry.side_effect = [{},
+                                             exceptions.GoogleAPICallError('Permission denied')]
 
-        self.__datacatalog_facade.get_entries_from_search_results(
-            search_results)
+        self.__datacatalog_facade.get_entries_from_search_results(search_results)
 
         self.assertEqual(2, datacatalog.get_entry.call_count)
 

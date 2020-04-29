@@ -25,8 +25,7 @@ class FilesetDatasourceExporterTest(unittest.TestCase):
                              __dict__['_FilesetDatasourceExporter__datacatalog_facade'])
 
     def test_export_tag_templates_when_no_templates_should_create_empty_file(self):
-        self.__fileset_datasource_exporter.export_filesets('my-project',
-                                                           self.__filesets_file_path)
+        self.__fileset_datasource_exporter.export_filesets('my-project', self.__filesets_file_path)
 
         created_fileset_file = pd.read_csv(self.__filesets_file_path)
 
@@ -36,8 +35,7 @@ class FilesetDatasourceExporterTest(unittest.TestCase):
         self.assertTrue(created_fileset_file.empty)
 
         self.assertEqual(1, self.__datacatalog_facade.search_filesets.call_count)
-        self.assertEqual(
-            1, self.__datacatalog_facade.get_entries_from_search_results.call_count)
+        self.assertEqual(1, self.__datacatalog_facade.get_entries_from_search_results.call_count)
 
     def test_export_tag_templates_when_templates_should_create_file(self):
         entry_id = 'my_entry'
@@ -56,14 +54,15 @@ class FilesetDatasourceExporterTest(unittest.TestCase):
             create_default_fileset(entry_id_2)
         ]
 
-        self.__datacatalog_facade.get_entry_group.side_effect = [create_default_entry_group(
-            'my-entry-group'), create_default_entry_group('my-entry-group-2')]
+        self.__datacatalog_facade.get_entry_group.side_effect = [
+            create_default_entry_group('my-entry-group'),
+            create_default_entry_group('my-entry-group-2')
+        ]
 
         self.__datacatalog_facade.extract_resources_from_entry_name.return_value = (
             'my-project', 'my-location', 'my-entry-group-id', 'my-entry')
 
-        self.__fileset_datasource_exporter.export_filesets('my-project',
-                                                           self.__filesets_file_path)
+        self.__fileset_datasource_exporter.export_filesets('my-project', self.__filesets_file_path)
 
         created_fileset_file = pd.read_csv(self.__filesets_file_path)
         expected_fileset_file = pd.read_csv(
@@ -73,12 +72,9 @@ class FilesetDatasourceExporterTest(unittest.TestCase):
         os.remove(self.__filesets_file_path)
 
         # Fill null fields so the sorting will produce deterministic results.
-        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[0]].fillna(method='pad',
-                                                                        inplace=True)
-        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[1]].fillna(method='pad',
-                                                                        inplace=True)
-        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[2]].fillna(method='pad',
-                                                                        inplace=True)
+        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[0]].fillna(method='pad', inplace=True)
+        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[1]].fillna(method='pad', inplace=True)
+        created_fileset_file[constant.FILESETS_COLUMNS_ORDER[2]].fillna(method='pad', inplace=True)
         expected_fileset_file[constant.FILESETS_COLUMNS_ORDER[0]].fillna(method='pad',
                                                                          inplace=True)
         expected_fileset_file[constant.FILESETS_COLUMNS_ORDER[1]].fillna(method='pad',
@@ -87,18 +83,15 @@ class FilesetDatasourceExporterTest(unittest.TestCase):
                                                                          inplace=True)
 
         self.assertEqual(1, self.__datacatalog_facade.search_filesets.call_count)
-        self.assertEqual(
-            1, self.__datacatalog_facade.get_entries_from_search_results.call_count)
+        self.assertEqual(1, self.__datacatalog_facade.get_entries_from_search_results.call_count)
 
         assert_frame_equal(
             created_fileset_file.sort_values([
-                constant.FILESETS_COLUMNS_ORDER[0],
-                constant.FILESETS_COLUMNS_ORDER[3],
+                constant.FILESETS_COLUMNS_ORDER[0], constant.FILESETS_COLUMNS_ORDER[3],
                 constant.FILESETS_COLUMNS_ORDER[7]
             ]),
             expected_fileset_file.sort_values([
-                constant.FILESETS_COLUMNS_ORDER[0],
-                constant.FILESETS_COLUMNS_ORDER[3],
+                constant.FILESETS_COLUMNS_ORDER[0], constant.FILESETS_COLUMNS_ORDER[3],
                 constant.FILESETS_COLUMNS_ORDER[7]
             ]))
 
@@ -112,19 +105,20 @@ def create_default_fileset(entry_name):
     entry.gcs_fileset_spec.file_patterns.append('gs://bucket_13c4/*')
     entry.type = datacatalog.enums.EntryType.FILESET
 
-    columns = [datacatalog.types.ColumnSchema(
-        column='first_name',
-        description='First name',
-        mode='REQUIRED',
-        type='STRING'), datacatalog.types.ColumnSchema(
-        column='first_NAME',
-        description='First name',
-        mode='REQUIRED',
-        type='STRING'), datacatalog.types.ColumnSchema(
-        column='last_name',
-        description='Last name',
-        mode='REQUIRED',
-        type='STRING')]
+    columns = [
+        datacatalog.types.ColumnSchema(column='first_name',
+                                       description='First name',
+                                       mode='REQUIRED',
+                                       type='STRING'),
+        datacatalog.types.ColumnSchema(column='first_NAME',
+                                       description='First name',
+                                       mode='REQUIRED',
+                                       type='STRING'),
+        datacatalog.types.ColumnSchema(column='last_name',
+                                       description='Last name',
+                                       mode='REQUIRED',
+                                       type='STRING')
+    ]
 
     entry.schema.columns.extend(columns)
 

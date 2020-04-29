@@ -9,26 +9,23 @@ class DatacatalogFilesetExporterCLITest(unittest.TestCase):
 
     def test_parse_args_invalid_subcommand_should_raise_system_exit(self):
         self.assertRaises(
-            SystemExit,
-            datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI._parse_args,
+            SystemExit, datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI._parse_args,
             ['invalid-subcommand'])
 
     def test_parse_args_create_tags_missing_mandatory_args_should_raise_system_exit(self):
         self.assertRaises(
-            SystemExit,
-            datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI._parse_args,
+            SystemExit, datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI._parse_args,
             ['filesets', 'export'])
 
     def test_run_no_args_should_raise_attribute_error(self):
-        self.assertRaises(
-            AttributeError,
-            datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI.run, None)
+        self.assertRaises(AttributeError,
+                          datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI.run, None)
 
     @mock.patch('datacatalog_fileset_exporter.datacatalog_fileset_exporter_cli.'
                 'fileset_datasource_exporter.'
                 'FilesetDatasourceExporter')
     def test_run_export_tag_templates_should_call_correct_method(
-        self, mock_fileset_datasource_exporter):  # noqa: E125
+            self, mock_fileset_datasource_exporter):  # noqa: E125
 
         datacatalog_fileset_exporter_cli.DatacatalogFilesetExporterCLI.run([
             'filesets', 'export', '--file-path', 'test.csv', '--project-ids',

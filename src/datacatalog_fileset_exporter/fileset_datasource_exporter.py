@@ -31,8 +31,7 @@ class FilesetDatasourceExporter:
 
     def __export_filesets(self, project_ids, file_path=None):
         search_results = self.__datacatalog_facade.search_filesets(project_ids)
-        entries = self.__datacatalog_facade.get_entries_from_search_results(
-            search_results)
+        entries = self.__datacatalog_facade.get_entries_from_search_results(search_results)
         dataframe = self.__entries_to_dataframe(entries)
 
         if file_path is None:
@@ -55,9 +54,8 @@ class FilesetDatasourceExporter:
             project_id, location_id, entry_group_id, entry_id = \
                 self.__datacatalog_facade.extract_resources_from_entry_name(entry_name)
 
-            entry_group_name = datacatalog.DataCatalogClient.entry_group_path(project_id,
-                                                                              location_id,
-                                                                              entry_group_id)
+            entry_group_name = datacatalog.DataCatalogClient.entry_group_path(
+                project_id, location_id, entry_group_id)
 
             entry_group = self.__datacatalog_facade.get_entry_group(entry_group_name)
             entry_group_name = entry_group.name
@@ -76,28 +74,21 @@ class FilesetDatasourceExporter:
                     column_index = list(columns).index(column)
 
                     if column_index == 0:
-                        dataframe = self.__append_values(dataframe, entry_description,
-                                                         entry_display_name,
-                                                         entry_group_description,
-                                                         entry_group_display_name, entry_group_name,
-                                                         entry_id, file_patterns,
-                                                         schema_column_description,
-                                                         schema_column_mode,
-                                                         schema_column_name, schema_column_type)
+                        dataframe = self.__append_values(
+                            dataframe, entry_description, entry_display_name,
+                            entry_group_description, entry_group_display_name, entry_group_name,
+                            entry_id, file_patterns, schema_column_description, schema_column_mode,
+                            schema_column_name, schema_column_type)
                     else:
                         dataframe = self.__append_values(dataframe, entry_description,
-                                                         entry_display_name, '',
-                                                         '', '',
-                                                         entry_id, file_patterns,
-                                                         schema_column_description,
-                                                         schema_column_mode,
-                                                         schema_column_name, schema_column_type)
+                                                         entry_display_name, '', '', '', entry_id,
+                                                         file_patterns, schema_column_description,
+                                                         schema_column_mode, schema_column_name,
+                                                         schema_column_type)
             else:
-                dataframe = self.__append_values(dataframe, entry_description,
-                                                 entry_display_name, entry_group_description,
-                                                 entry_group_display_name, entry_group_name,
-                                                 entry_id, file_patterns,
-                                                 '', '',
+                dataframe = self.__append_values(dataframe, entry_description, entry_display_name,
+                                                 entry_group_description, entry_group_display_name,
+                                                 entry_group_name, entry_id, file_patterns, '', '',
                                                  '', '')
 
         return dataframe

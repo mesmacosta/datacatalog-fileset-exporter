@@ -31,8 +31,7 @@ class DatacatalogFilesetExporterCLI:
 
     @classmethod
     def add_filesets_cmd(cls, subparsers):
-        filesets_parser = subparsers.add_parser("filesets",
-                                                help="Filesets commands")
+        filesets_parser = subparsers.add_parser("filesets", help="Filesets commands")
 
         filesets_subparsers = filesets_parser.add_subparsers()
 
@@ -40,13 +39,12 @@ class DatacatalogFilesetExporterCLI:
 
     @classmethod
     def add_export_filesets_cmd(cls, subparsers):
-        export_filesets_parser = subparsers.add_parser('export',
-                                                       help='Export Filesets to CSV')
+        export_filesets_parser = subparsers.add_parser('export', help='Export Filesets to CSV')
         export_filesets_parser.add_argument('--file-path',
                                             help='File path where file will be exported')
         export_filesets_parser.add_argument('--project-ids',
                                             help='Project ids to narrow down Filesets list,'
-                                                 'split by comma',
+                                            'split by comma',
                                             required=True)
         export_filesets_parser.set_defaults(func=cls.__export_filesets)
 
