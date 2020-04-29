@@ -109,7 +109,7 @@ datacatalog-fileset-exporter filesets export --project-ids my-project --file-pat
 [1]: https://circleci.com/gh/mesmacosta/datacatalog-fileset-exporter.svg?style=svg
 [2]: https://circleci.com/gh/mesmacosta/datacatalog-fileset-exporter
 [3]: https://virtualenv.pypa.io/en/latest/
-[7]: https://img.shields.io/pypi/v/datacatalog-fileset-exporter.svg
+[7]: https://img.shields.io/pypi/v/datacatalog-fileset-exporter.svg?force_cache=true
 [8]: https://pypi.org/project/datacatalog-fileset-exporter/
 [9]: https://img.shields.io/github/license/mesmacosta/datacatalog-fileset-exporter.svg
 [10]: https://img.shields.io/github/issues/mesmacosta/datacatalog-fileset-exporter.svg
