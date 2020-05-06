@@ -108,7 +108,8 @@ Let's see the output:
 cat ~/output/filesets.csv
 ```
 
-Use the Cloud Editor to see the results, or upload the CSV to Google Sheets to better visualize it.
+Use the Cloud Editor to see the <walkthrough-editor-open-file filePath="~/output/filesets.csv" text="filesets.csv">
+</walkthrough-editor-open-file> file, or upload it to Google Sheets to better visualize it.
 
 ## Congratulations!
 
