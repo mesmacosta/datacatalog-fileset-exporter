@@ -30,12 +30,15 @@ This section explains the CSV columns created when the Python CLI is executed.
 
 First, let's set up the Service Account.
 
-Start by loading your project ID.
+Start by setting your project ID. Replace the placeholder to your project.
+```bash
+gcloud config set project MY_PROJECT_PLACEHOLDER
+```
+
+Next load it in a environment variable.
 ```bash
 export PROJECT_ID=$(gcloud config get-value project)
 ```
-If it throws an error, follow the instructions in Cloud Shell and re run the command.
-
 
 Then create a Service Account.
 ```bash
