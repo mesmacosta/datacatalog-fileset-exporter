@@ -10,7 +10,7 @@ http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.c
 
 This tutorial will walk you through the execution of the Data Catalog Fileset Exporter.
 
-## CLI
+## Python CLI
 
 This script is a Python CLI, if you want to look at the code open:
 <walkthrough-editor-open-file filePath="cloudshell_open/datacatalog-fileset-exporter/src/datacatalog_fileset_exporter/datacatalog_fileset_exporter_cli.py"
@@ -22,7 +22,7 @@ Otherwise go to the next step.
 ## CSV fields
 
 Go to the
-<walkthrough-editor-open-file filePath="datacatalog-fileset-exporter/README.md" text="README.md">
+<walkthrough-editor-open-file filePath="cloudshell_open/datacatalog-fileset-exporter/README.md" text="README.md">
 </walkthrough-editor-open-file> file, and find the ## 5. Export Filesets to CSV file section.
 This section explains the CSV columns created when the CLI is executed.
 
