@@ -15,16 +15,15 @@ This tutorial will walk you through the execution of the Data Catalog Fileset Ex
 Each product's api definition is stored in the magic-modules repo.
 
 Let's open
-<walkthrough-editor-open-file filePath="src/datacatalog_fileset_exporter/datacatalog_fileset_exporter_cli.py"
+<walkthrough-editor-open-file filePath="datacatalog-fileset-exporter/src/datacatalog_fileset_exporter/datacatalog_fileset_exporter_cli.py"
                               text="datacatalog_fileset_exporter_cli.py">
 </walkthrough-editor-open-file>.
 
 ### CLI Args
 
 The
-<walkthrough-editor-select-regex filePath="README.md"
-                                 text="top section">
-</walkthrough-editor-select-regex>
+<walkthrough-editor-open-file filePath="datacatalog-fileset-exporter/README.md">
+</walkthrough-editor-open-file>.
 provides metadata about the API, such as name, scopes, and versions.
 
 ## Compiling magic-modules
