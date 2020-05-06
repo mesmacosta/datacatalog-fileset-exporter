@@ -23,64 +23,80 @@ Otherwise go to the next step.
 
 Go to the
 <walkthrough-editor-open-file filePath="cloudshell_open/datacatalog-fileset-exporter/README.md" text="README.md">
-</walkthrough-editor-open-file> file, and find the ## 5. Export Filesets to CSV file section.
-This section explains the CSV columns created when the CLI is executed.
+</walkthrough-editor-open-file> file, and find the 5. Export Filesets to CSV file section.
+This section explains the CSV columns created when the Python CLI is executed.
 
 ## Executing the CLI
 
 First, let's set up the Service Account.
 
+Start by loading your project ID.
 ```bash
-# Get the current project_id
-expor PROJECT_ID=$(gcloud config get-value project)
+export PROJECT_ID=$(gcloud config get-value project)
+```
+If it throws an error, set your project with `gcloud config set project MY_PROJECT_ID_PLACEHOLDER`
 
-# Create Service Account
+
+Then create a Service Account.
+```bash
 gcloud iam service-accounts create datacatalog-fileset-exporter-sa \
 --display-name  "Service Account for Fileset Exporter" \
 --project $PROJECT_ID
+```
 
-# Create a credentials folder
+Next create a credentials folder where the Service Account will be saved.
+```bash
 mkdir -p ~/credentials
+```
 
-# Create and download the Key
+Next create and download the Service Account Key.
+```bash
 gcloud iam service-accounts keys create "~/credentials/datacatalog-fileset-exporter-sa.json" \
 --iam-account "datacatalog-fileset-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com"
+```
 
-# Add Data Catalog admin role
+Next add Data Catalog admin role to the Service Account.
+```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
 --member "serviceAccount:datacatalog-fileset-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com" \
 --quiet \
 --project $PROJECT_ID \
 --role "roles/datacatalog.admin"
+```
 
-# Set up the credentials
+Next set up the credentials environment variable.
+```bash
 export GOOGLE_APPLICATION_CREDENTIALS=~/credentials/datacatalog-fileset-exporter-sa.json
 ```
 
-Then, install and config the datacatalog-fileset-exporter CLI.
+Next install and config the datacatalog-fileset-exporter CLI.
 ```bash
-# Install datacatalog-fileset-exporter
 pip3 install datacatalog-fileset-exporter --user
-
-# Set it to your PATH
+```
+Next load it to your PATH.
+```bash
 export PATH=~/.local/bin:$PATH
+```
 
-# Test it out
+Next test it out.
+```bash
 datacatalog-fileset-exporter --help
 ```
 
-Next, run the CLI:
-```bash
-# Create a output folder
-mkdir -p ~/output
+Next run the Python CLI:
 
-# Run the CLI
+Create an output folder:
+```bash
+mkdir -p ~/output
+```
+
+Run the CLI:
+```bash
 datacatalog-fileset-exporter filesets export --project-ids $PROJECT_ID --file-path ~/output/filesets.csv
 ```
 
-Let's see the output! Navigate to the Ansible submodule and run `git diff` to see what changed:
+Let's see the output:
 ```bash
-# See if the file was created.
 cat ~/output/filesets.csv
 ```
 Use the Cloud Editor to see the results, or upload the CSV to Google Sheets to better visualize it.
