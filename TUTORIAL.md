@@ -42,7 +42,7 @@ export PROJECT_ID=$(gcloud config get-value project)
 
 Then create a Service Account.
 ```bash
-gcloud iam service-accounts create datacatalog-fileset-exporter-sa \
+gcloud iam service-accounts create datacatalog-fs-exporter-sa \
 --display-name  "Service Account for Fileset Exporter" \
 --project $PROJECT_ID
 ```
@@ -54,14 +54,14 @@ mkdir -p ~/credentials
 
 Next create and download the Service Account Key.
 ```bash
-gcloud iam service-accounts keys create "~/credentials/datacatalog-fileset-exporter-sa.json" \
+gcloud iam service-accounts keys create "~/credentials/datacatalog-fs-exporter-sa.json" \
 --iam-account "datacatalog-fileset-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com"
 ```
 
 Next add Data Catalog admin role to the Service Account.
 ```bash
 gcloud projects add-iam-policy-binding $PROJECT_ID \
---member "serviceAccount:datacatalog-fileset-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com" \
+--member "serviceAccount:datacatalog-fs-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com" \
 --quiet \
 --project $PROJECT_ID \
 --role "roles/datacatalog.admin"
@@ -69,7 +69,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 
 Next set up the credentials environment variable.
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=~/credentials/datacatalog-fileset-exporter-sa.json
+export GOOGLE_APPLICATION_CREDENTIALS=~/credentials/datacatalog-fs-exporter-sa.json
 ```
 
 Next install and config the datacatalog-fileset-exporter CLI.
