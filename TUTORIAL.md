@@ -26,9 +26,9 @@ Go to the
 </walkthrough-editor-open-file> file, and find the 5. Export Filesets to CSV file section.
 This section explains the CSV columns created when the Python CLI is executed.
 
-## Executing the CLI
+## Set Up the Service Account
 
-First, let's set up the Service Account.
+First, let's set up the Service Account. (You may skip this, if you already have your Service Account)
 
 Start by setting your project ID. Replace the placeholder to your project.
 ```bash
@@ -73,7 +73,9 @@ Next set up the credentials environment variable.
 export GOOGLE_APPLICATION_CREDENTIALS=~/credentials/datacatalog-fs-exporter-sa.json
 ```
 
-Next install and config the datacatalog-fileset-exporter CLI.
+## Install the Python CLI
+
+Install and config the datacatalog-fileset-exporter CLI.
 ```bash
 pip3 install datacatalog-fileset-exporter --user
 ```
@@ -87,7 +89,9 @@ Next test it out.
 datacatalog-fileset-exporter --help
 ```
 
-Next run the Python CLI:
+## Execute the Python CLI
+
+Run the Python CLI:
 
 Create an output folder:
 ```bash
@@ -103,6 +107,7 @@ Let's see the output:
 ```bash
 cat ~/output/filesets.csv
 ```
+
 Use the Cloud Editor to see the results, or upload the CSV to Google Sheets to better visualize it.
 
 ## Congratulations!
