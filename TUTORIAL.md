@@ -34,7 +34,7 @@ Start by loading your project ID.
 ```bash
 export PROJECT_ID=$(gcloud config get-value project)
 ```
-If it throws an error, set your project with `gcloud config set project MY_PROJECT_ID_PLACEHOLDER`
+If it throws an error, follow the instructions in Cloud Shell and re run the command.
 
 
 Then create a Service Account.
