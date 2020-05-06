@@ -54,8 +54,9 @@ mkdir -p ~/credentials
 
 Next create and download the Service Account Key.
 ```bash
-gcloud iam service-accounts keys create "datacatalog-fs-exporter-sa.json" --iam-account "datacatalog-fs-exporter
--sa@$PROJECT_ID.iam.gserviceaccount.com" && mv datacatalog-fs-exporter-sa.json ~/credentials/datacatalog-fs-exporter-sa.json
+gcloud iam service-accounts keys create "datacatalog-fs-exporter-sa.json" \
+--iam-account "datacatalog-fs-exporter-sa@$PROJECT_ID.iam.gserviceaccount.com" \
+&& mv datacatalog-fs-exporter-sa.json ~/credentials/datacatalog-fs-exporter-sa.json
 ```
 
 Next add Data Catalog admin role to the Service Account.
