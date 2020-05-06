@@ -22,6 +22,8 @@ export PATH=~/.local/bin:$PATH
 datacatalog-fileset-exporter --help
 ````
 
+[![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/mesmacosta/datacatalog-fileset-exporter&tutorial=TUTORIAL.md)
+
 ## 1. Environment setup
 
 ### 1.1. Python + virtualenv
