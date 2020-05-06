@@ -14,7 +14,7 @@ This tutorial will walk you through the execution of the Data Catalog Fileset Ex
 
 This script is a Python CLI, if you want to look at the code open:
 <walkthrough-editor-open-file filePath="datacatalog-fileset-exporter/src/datacatalog_fileset_exporter/datacatalog_fileset_exporter_cli.py"
-                              text="datacatalog_fileset_exporter_cli.py">
+                              text="datacatalog-fileset-exporter/src/datacatalog_fileset_exporter/datacatalog_fileset_exporter_cli.py">
 </walkthrough-editor-open-file>.
 
 Otherwise go to the next step.
