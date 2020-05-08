@@ -35,7 +35,7 @@ class DatacatalogFilesetExporterCLITest(unittest.TestCase):
         fileset_datasource_processor = mock_fileset_datasource_exporter.return_value
         fileset_datasource_processor.export_filesets.assert_called_once()
         fileset_datasource_processor.export_filesets.assert_called_with(
-            project_ids='my-project1,my-project2', file_path='test.csv')
+            date_created=None, project_ids='my-project1,my-project2', file_path='test.csv')
 
     @mock.patch('datacatalog_fileset_exporter.datacatalog_fileset_exporter_cli.'
                 'DatacatalogFilesetExporterCLI')

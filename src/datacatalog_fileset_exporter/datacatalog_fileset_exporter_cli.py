@@ -46,12 +46,16 @@ class DatacatalogFilesetExporterCLI:
                                             help='Project ids to narrow down Filesets list,'
                                             'split by comma',
                                             required=True)
+        export_filesets_parser.add_argument('--date-created',
+                                            help='Look for Filesets created after the date, '
+                                            'format:YYYY-MM-DDThh:mm:ss.'
+                                            ' All timestamps must be in GMT')
         export_filesets_parser.set_defaults(func=cls.__export_filesets)
 
     @classmethod
     def __export_filesets(cls, args):
         fileset_datasource_exporter.FilesetDatasourceExporter().export_filesets(
-            project_ids=args.project_ids, file_path=args.file_path)
+            project_ids=args.project_ids, file_path=args.file_path, date_created=args.date_created)
 
 
 def main():

@@ -17,12 +17,15 @@ class DataCatalogFacade:
 
     # Currently we don't have a list method, so we are using search which is not exhaustive,
     # and might not return some entries.
-    def search_filesets(self, project_ids):
+    def search_filesets(self, project_ids, date_created=None):
         scope = datacatalog.types.SearchCatalogRequest.Scope()
 
         scope.include_project_ids.extend(project_ids.split(','))
 
         query = 'type=FILESET'
+
+        if date_created:
+            query = '{} createtime>{}'.format(query, date_created)
 
         results_iterator = self.__datacatalog.search_catalog(scope=scope,
                                                              query=query,

@@ -12,25 +12,29 @@ class FilesetDatasourceExporter:
     def __init__(self):
         self.__datacatalog_facade = datacatalog_facade.DataCatalogFacade()
 
-    def export_filesets(self, project_ids, file_path=None):
+    def export_filesets(self, project_ids, file_path=None, date_created=None):
         """
         Export Filesets found by searching Data Catalog.
 
         :param file_path: File path to be exported to.
         :param project_ids: Project ids to narrow down search results.
+        :param date_created: Fileset Creation Date.
         """
         logging.info('')
         logging.info('===> Export Filesets [STARTED]')
 
+        if date_created:
+            logging.info('=> Looking for Filesets created after: %s', date_created)
+
         logging.info('')
         logging.info('Exporting the Filesets...')
-        self.__export_filesets(project_ids, file_path)
+        self.__export_filesets(project_ids, file_path, date_created)
 
         logging.info('')
         logging.info('==== Export Filesets [FINISHED] =============')
 
-    def __export_filesets(self, project_ids, file_path=None):
-        search_results = self.__datacatalog_facade.search_filesets(project_ids)
+    def __export_filesets(self, project_ids, file_path=None, date_created=None):
+        search_results = self.__datacatalog_facade.search_filesets(project_ids, date_created)
         entries = self.__datacatalog_facade.get_entries_from_search_results(search_results)
         dataframe = self.__entries_to_dataframe(entries)
 
