@@ -48,9 +48,12 @@ class DataCatalogFacade:
     @lru_cache(maxsize=16)
     def get_entry_group(self, name):
         self.__log_operation_start('GET Entry: %s', name)
-        entry = self.__datacatalog.get_entry_group(name=name)
-        self.__log_single_object_read_result(entry)
-        return entry
+        try:
+            entry_group = self.__datacatalog.get_entry_group(name=name)
+            self.__log_single_object_read_result(entry_group)
+            return entry_group
+        except exceptions.GoogleAPICallError as e:
+            logging.warning('Exception getting Entry Group %s: %s', name, str(e))
 
     def get_entries_from_search_results(self, search_results):
         entries = []

@@ -62,9 +62,12 @@ class FilesetDatasourceExporter:
                 project_id, location_id, entry_group_id)
 
             entry_group = self.__datacatalog_facade.get_entry_group(entry_group_name)
-            entry_group_name = entry_group.name
-            entry_group_display_name = entry_group.display_name
-            entry_group_description = entry_group.description
+            if entry_group:
+                entry_group_name = entry_group.name
+                entry_group_display_name = entry_group.display_name
+                entry_group_description = entry_group.description
+            else:
+                entry_group_name = entry_group_name
 
             columns = entry.schema.columns
 
