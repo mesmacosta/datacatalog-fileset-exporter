@@ -6,6 +6,37 @@ A Python package to manage Google Cloud Data Catalog Fileset export scripts.
 
 **Disclaimer: This is not an officially supported Google product.**
 
+<!--
+  ⚠️ DO NOT UPDATE THE TABLE OF CONTENTS MANUALLY ️️⚠️
+  run `npx markdown-toc -i README.md`.
+
+  Please stick to 80-character line wraps as much as you can.
+-->
+
+## Table of Contents
+
+<!-- toc -->
+
+- [Executing in Cloud Shell](#executing-in-cloud-shell)
+- [1. Environment setup](#1-environment-setup)
+  * [1.1. Python + virtualenv](#11-python--virtualenv)
+    + [1.1.1. Install Python 3.6+](#111-install-python-36)
+    + [1.1.2. Get the source code](#112-get-the-source-code)
+    + [1.1.3. Create and activate an isolated Python environment](#113-create-and-activate-an-isolated-python-environment)
+    + [1.1.4. Install the package](#114-install-the-package)
+  * [1.2. Docker](#12-docker)
+  * [1.3. Auth credentials](#13-auth-credentials)
+    + [1.3.1. Create a service account and grant it below roles](#131-create-a-service-account-and-grant-it-below-roles)
+    + [1.3.2. Download a JSON key and save it as](#132-download-a-json-key-and-save-it-as)
+    + [1.3.3. Set the environment variables](#133-set-the-environment-variables)
+- [2. Export Filesets to CSV file](#2-export-filesets-to-csv-file)
+  * [2.1. A CSV file representing the Filesets will be created](#21-a-csv-file-representing-the-filesets-will-be-created)
+  * [2.2. Run the datacatalog-fileset-exporter script](#22-run-the-datacatalog-fileset-exporter-script)
+
+<!-- tocstop -->
+
+-----
+
 ## Executing in Cloud Shell
 ````bash
 # Set your SERVICE ACCOUNT, for instructions go to 1.3. Auth credentials
@@ -78,9 +109,9 @@ _This step may be skipped if you're using [Docker](#12-docker)._
 export GOOGLE_APPLICATION_CREDENTIALS=~/credentials/datacatalog-fileset-exporter-sa.json
 ```
 
-## 5. Export Filesets to CSV file
+## 2. Export Filesets to CSV file
 
-### 5.1. A CSV file representing the Filesets will be created
+### 2.1. A CSV file representing the Filesets will be created
 
 Filesets are composed of as many lines as required to represent all of their fields. The columns are
 described as follows:
@@ -99,7 +130,7 @@ described as follows:
 | **schema_column_description** | Schema column description.| N         |
 | **schema_column_mode**        | Schema column mode.       | N         |
 
-### 5.2. Run the datacatalog-fileset-exporter script
+### 2.2. Run the datacatalog-fileset-exporter script
 
 - Python + virtualenv
 
